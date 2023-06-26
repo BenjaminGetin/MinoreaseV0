@@ -1,6 +1,7 @@
 package fr.v0.minorease.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.NoArgsConstructor;
 
@@ -19,7 +20,17 @@ public class Child {
     @NotEmpty(message = "Last name cannot be empty")
     private String lastname;
 
+
+    private String phoneNumber;
+
+    @Email
+    private String email;
+
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    private Parent parent;
 }

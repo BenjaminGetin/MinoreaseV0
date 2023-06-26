@@ -30,6 +30,8 @@ public class Hotel {
 
     private Integer star;
 
+    private String webSite;
+
     @ManyToOne
     @JoinColumn(name = "hotelier_id")
     private Hotelier hotelier;

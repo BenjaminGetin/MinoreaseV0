@@ -3,7 +3,10 @@ package fr.v0.minorease.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -26,4 +29,15 @@ public class Parent {
 
     @Email
     private String childEmail;
+
+    private String identityCardFile;
+
+    private String familyBookFile;
+
+    private String billingAddress;
+
+    private String phoneNumber;
+
+    @OneToMany(mappedBy = "parent")
+    private List<Child> children;
 }

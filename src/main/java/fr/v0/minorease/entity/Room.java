@@ -18,6 +18,10 @@ public class Room {
 
     private Double price;
 
+    private String image;
+
+    private String description;
+
     @ManyToOne
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
