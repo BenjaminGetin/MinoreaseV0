@@ -1,2 +1,7 @@
-package fr.v0.minorease.service;public class HotelierService {
+package fr.v0.minorease.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class HotelierService {
 }
