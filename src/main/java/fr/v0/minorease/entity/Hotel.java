@@ -32,9 +32,6 @@ public class Hotel {
 
     private String webSite;
 
-    @ManyToOne
-    @JoinColumn(name = "hotelier_id")
-    private Hotelier hotelier;
 
     @OneToMany(mappedBy = "hotel")
     private List<Room> rooms;
