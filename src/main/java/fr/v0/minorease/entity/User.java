@@ -3,7 +3,9 @@ package fr.v0.minorease.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -12,6 +14,8 @@ import java.util.Collection;
 @Entity
 @NoArgsConstructor
 @Table(name = "users")
+@Getter
+@Setter
 public class User implements UserDetails {
 
     @Id

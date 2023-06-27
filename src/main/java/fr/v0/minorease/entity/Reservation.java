@@ -1,7 +1,9 @@
 package fr.v0.minorease.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -9,6 +11,8 @@ import java.time.LocalDate;
 @Entity
 @NoArgsConstructor
 @Table(name = "reservations")
+@Getter
+@Setter
 public class Reservation {
 
     @Id
