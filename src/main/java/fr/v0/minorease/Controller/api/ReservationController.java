@@ -1,10 +1,9 @@
-package fr.v0.minorease.Controller;
+package fr.v0.minorease.Controller.api;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 @Controller
-@RequestMapping("v0/parent")
-public class ParentController {
+@RequestMapping("v0/reservation")
+public class ReservationController {
 }
