@@ -13,6 +13,7 @@ import jakarta.persistence.Query;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HotelService {
@@ -29,5 +30,11 @@ public class HotelService {
     public List<Hotel> getAllHotels() {
         return hotelRepository.findAll();
     }
+
+    public Hotel getHotelById(Long hotelId) {
+        Optional<Hotel> optionalHotel = hotelRepository.findById(hotelId);
+        return optionalHotel.orElse(null);
+    }
+
 }
 

@@ -19,4 +19,6 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
             "AND (:maxPrice IS NULL OR r.price >= :maxPrice)")
     List<Room> searchRooms(@Param("city") String city, @Param("capacity") Integer capacity, @Param("arrivalDate") LocalDate arrivalDate, @Param("departureDate") LocalDate departureDate, @Param("minRating") Double minRating, @Param("maxPrice") BigDecimal maxPrice);
 
+    List<Room> findByHotelId(Long hotelId);
+
 }

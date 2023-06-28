@@ -16,11 +16,19 @@
 
 <div id="carouselExample" class="carousel slide">
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img th:src="${hotels.image}" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#555" dy=".3em">Hotel image</text></img>
+        <div class="carousel-item active" th:each="hotel, hotelIndex : ${hotels}">
+            <img th:src="${hotel.image}" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#777"></rect>
+            <text x="50%" y="50%" fill="#555" dy=".3em">Hotel image</text>
         </div>
-        <div class="carousel-item">
-            <img th:src="${rooms.image}" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"></rect><text x="50%" y="50%" fill="#444" dy=".3em">Room image</text></img>
+
+        <!-- Pour les images de chambre -->
+        <div class="carousel-item" th:each="room, roomIndex : ${rooms}">
+            <img th:src="${room.image}" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#666"></rect>
+            <text x="50%" y="50%" fill="#444" dy=".3em">Room image</text>
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -31,8 +39,8 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
+<p class="h4" th:text="${room.price}">$$$$$</p>
 </div>
-<p class="h4" th:text="${rooms.price}">$$$$$</p>
 
 <div class="container">
     <div class="row justify-content-center">

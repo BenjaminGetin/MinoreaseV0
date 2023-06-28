@@ -22,4 +22,7 @@ public class RoomService {
         return roomRepository.searchRooms(city, capacity, arrivalDate, departureDate, minRating, maxPrice);
     }
 
+    public List<Room> getRoomsByHotelId(Long hotelId) {
+        return roomRepository.findByHotelId(hotelId);
+    }
 }
