@@ -1,6 +1,7 @@
 package fr.v0.minorease.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,7 @@ public class RoomAvailability {
 
     @ManyToOne
     @JoinColumn(name = "room_id")
+    @JsonIgnore
     private Room room;
 
     private LocalDate date;

@@ -1,5 +1,6 @@
 package fr.v0.minorease.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -46,5 +47,6 @@ public class Hotel {
     private BigDecimal longitude;
 
     @OneToMany(mappedBy = "hotel")
+    @JsonIgnore
     private List<Room> rooms;
 }

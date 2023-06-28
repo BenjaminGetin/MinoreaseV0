@@ -1,5 +1,6 @@
 package fr.v0.minorease.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,7 +31,9 @@ public class Room {
 
     @ManyToOne
     @JoinColumn(name = "hotel_id")
+    @JsonIgnore
     private Hotel hotel;
+
 
     @OneToMany(mappedBy = "room")
     private List<RoomAvailability> availabilities;
