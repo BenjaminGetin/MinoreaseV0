@@ -1,0 +1,13 @@
+body, html{
+    font-family: "EB Garamond";
+}
+.bouton{
+    background: #1A1A4C;
+    border-radius: 10px;
+    color: #FCF641;
+    font-family: "EB Garamond";
+    font-size: 24px;
+}
+.bouton:hover{
+    border: solid 2px #FCF641;
+}
