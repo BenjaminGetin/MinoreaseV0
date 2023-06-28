@@ -11,3 +11,17 @@ body, html{
 .bouton:hover{
     border: solid 2px #FCF641;
 }
+.cadre{
+    background: #1A1A4C;
+    border-radius: 15px;
+    width: 70%;
+}
+.dest{
+    width : 75%;
+}
+.libelle{
+    color: #FCF641;
+}
+.champ{
+    height: 24px;
+}
