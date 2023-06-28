@@ -14,17 +14,61 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
 
 </head>
-<body>
 
 <header th:replace="~{header :: header}">
 
 </header>
+<body class="p-3 m-0 border-0 bd-example m-0 border-0">
+
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center">
+            <p class="h1 lead">Page Log-in</p>
+        </div>
+    </div>
+</div>
+
+<form class>
+    <div class="container  my-4">
+        <div class="row justify-content-center">
+            <div class="col-sm-6 text-center">
+                <label for="validationCustom01" class="form-label">username</label>
+                <input type="text" class="form-control" id="validationCustom01" placeholder="e-mail" required>
+            </div>
+        </div>
+
+        <div class="container my-4">
+            <div class="row justify-content-center">
+                <div class="col-sm-6 text-center">
+                    <label for="inputPassword5" class="form-label">Password</label>
+                    <input type="password" id="inputPassword5" class="form-control" placeholder="********"
+                           aria-labelledby="passwordHelpBlock">
+                    <div id="passwordHelpBlock" class="form-text">
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
 
 
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-1 col-md-6 text-center">
+                    <div class="mb-3 text-center">
+                        <a th:href="/login"> <button class="btn btn-primary" type="button">S'inscrire</button></a>
+                        <button class="btn btn-primary" type="submit">Connexion</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 
+<footer th:replace="footer-fragment">
+</footer>
 
 <!--BootStrap-->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
