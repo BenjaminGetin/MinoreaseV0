@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +11,13 @@
 <body class="p-3 m-0 border-0 bd-example m-0 border-0">
 
 <!-- fragment header here -->
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center">
+            <p class="h1 lead">Inscription de Parent</p>
+        </div>
+    </div>
+</div>
 
 <form class>
     <div class="container my-4">
@@ -84,13 +91,7 @@
 
     <div class="container my-4">
         <div class="row">
-            <div class="mb-3">
-                <label for="livretfamille" class="form-label">Livret de Famille</label>
-                <input type="file" class="form-control" id="livretfamille" aria-label="file example" required>
-                <div class="invalid-feedback">Example invalid form file feedback</div>
-            </div>
-
-            <div class="mb-3">
+            <div class="col">
                 <label for="pieceidentité" class="form-label">Piece d'identité</label>
                 <input type="file" class="form-control" id="pieceidentité" aria-label="file example"
                        placeholder="piece d'identité" required>
