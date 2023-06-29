@@ -16,7 +16,6 @@ import java.util.List;
 public class RoomDetailsController {
 
     private final HotelService hotelService;
-
     private final RoomService roomService;
 
     public RoomDetailsController(HotelService hotelService, RoomService roomService) {
@@ -24,19 +23,16 @@ public class RoomDetailsController {
         this.roomService = roomService;
     }
 
-
-    @GetMapping("/hotel/{id}")
-    public ModelAndView showRoomsDetails(@PathVariable("id") Long hotelId) {
+    @GetMapping("/room/{id}")
+    public ModelAndView showRoomDetails(@PathVariable("id") Long roomId) {
         ModelAndView modelAndView = new ModelAndView("hotel");
-        Hotel hotels = hotelService.getHotelById(hotelId);
-        List<Room> rooms = roomService.getRoomsByHotelId(hotelId);
+        Room room = roomService.getRoomById(roomId);
+        Hotel hotel = room.getHotel();
 
-        modelAndView.addObject("hotels", hotels);
-        modelAndView.addObject("rooms", rooms);
+        modelAndView.addObject("hotel", hotel);
+        modelAndView.addObject("room", room);
 
         return modelAndView;
     }
-
-
-
 }
+

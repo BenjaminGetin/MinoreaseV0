@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RoomService {
@@ -22,7 +23,10 @@ public class RoomService {
         return roomRepository.searchRooms(city, capacity, arrivalDate, departureDate, minRating, maxPrice);
     }
 
-    public List<Room> getRoomsByHotelId(Long hotelId) {
-        return roomRepository.findByHotelId(hotelId);
+
+    public Room getRoomById(Long roomId) {
+        Optional<Room> optionalRoom = roomRepository.findById(roomId);
+        return optionalRoom.orElse(null);
     }
+
 }
