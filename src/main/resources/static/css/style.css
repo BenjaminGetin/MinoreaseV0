@@ -1,5 +1,23 @@
-body, html{
+body, html, *{
     font-family: "EB Garamond";
+}
+.minorease{
+    font-family: Cinzel;
+    color: #FCF641;
+    font-size: 36px;
+}
+h1, h2, h3{
+    font-weight: bold;
+}
+h1{
+    color: #1A1A4C;
+    font-size: 28px;
+}
+h2{
+    font-size: 22px;
+}
+h3{
+    font-size: 18px;
 }
 .bouton{
     background: #1A1A4C;
