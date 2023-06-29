@@ -18,6 +18,84 @@
 <body>
 <header th:replace="~{fragments/header :: header}"></header>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paiement </title>
+</head>
+<body>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Minorease Inscription</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+    <style>
+        body, html {
+            padding: 0!important;
+            margin: 0!important;
+        }
+    </style>
+</head>
+
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+<div class="p-3 m-0 border-0 bd-example m-0 border-0">
+
+    <p class="h1" th:text="${hotel.name}">Hotel Name</p>
+    <p class="h6" th:text="${hotel.location}">Hotel Address</p>
+    <p class="h6" th:text="${hotel.rating}">Hotel Rating</p>
+
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active" th:each="hotelImage, hotelImageIndex : ${hotel.image}">
+                <img th:src="${hotelImage}" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800"
+                     height="400" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice"
+                     focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#777"></rect>
+                <text x="50%" y="50%" fill="#555" dy=".3em">Hotel image</text>
+            </div>
+        </div>
+    </div>
+
+    <div id="roomCarouselExample" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img th:src="${room.image}" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800"
+                     height="400" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice"
+                     focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#666"></rect>
+                <text x="50%" y="50%" fill="#444" dy=".3em">Room image</text>
+            </div>
+        </div>
+    </div>
+    <p class="h4" th:text="${room.price}">$$$$$</p>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="mb-3 text-center">
+                    <button class="btn btn-primary" th:onclick="|window.location='achat'|">Payer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+</body>
+</html>
+
+</body>
+</html>
 <!--BootStrap-->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
