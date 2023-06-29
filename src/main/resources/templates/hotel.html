@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+        crossorigin=""></script>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,6 +22,7 @@
             margin: 0 !important;
         }
     </style>
+    <link th:rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -70,27 +77,78 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container my-4">
         <div class="row">
-            <div class="col-sm-9">
+            <div class="col-sm-4">
+                <p class="h5">
+                    <i class="fas fa-smoking"></i> No smoking
+                </p>
+                <p class="h5">
+                    <i class="fas fa-paw"></i> Pets allowed
+                </p>
+            </div>
+            <div class="col-sm-4">
+                <p class="h5">
+                    <i class="fas fa-wifi"></i> Wifi
+                </p>
+                <p class="h5">
+                    <i class="fas fa-clock"></i> Réception ouverte 24h/24
+                </p>
+            </div>
+            <div class="col-sm-4">
+                <p class="h5">
+                    <i class="fas fa-concierge-bell"></i> Service d'étage
+                </p>
+                <p class="h5">
+                    <i class="fas fa-users"></i> Chambres familiales
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container my-4">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card-body" id="map">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${hotel.location}">Card title</h5>
+                        <a href="#" class="btn btn-outline-primary">Go to map</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
                 <p class="lead" th:text="${room.description}"></p>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <p class="h4" th:text="${room.price + '€/nuit'}"></p>
             </div>
         </div>
     </div>
 
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-6">
                 <div class="mb-3 text-center">
-                    <button class="btn btn-primary" th:onclick="|window.location='reservation'|">Reserver</button>
+                    <button class="btn btn-outline-primary" th:onclick="|window.location='reservation'|">Reserver</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <footer th:replace="~{fragments/footer :: footer}"></footer>
+
+<script src="/js/script.js"></script>
+<script th:each="hotel : ${hotels}" th:object="${hotel}" th:inline="javascript">
+    addMarkerOnMap([[${hotel.latitude}]], [[${hotel.longitude}]], [[${hotel.name}]], [[${hotel.location}]]);
+</script>
+<script>
+    function visit(url) {
+        window.location.href=url;
+    }
+</script>
+
 </body>
 </html>
