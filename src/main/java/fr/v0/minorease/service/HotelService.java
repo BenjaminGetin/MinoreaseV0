@@ -20,9 +20,6 @@ public class HotelService {
 
     private final HotelRepository hotelRepository;
 
-    @PersistenceContext
-    private EntityManager entityManager;
-
     public HotelService(HotelRepository hotelRepository) {
         this.hotelRepository = hotelRepository;
     }
@@ -31,10 +28,6 @@ public class HotelService {
         return hotelRepository.findAll();
     }
 
-    public Hotel getHotelById(Long hotelId) {
-        Optional<Hotel> optionalHotel = hotelRepository.findById(hotelId);
-        return optionalHotel.orElse(null);
-    }
 
 }
 
