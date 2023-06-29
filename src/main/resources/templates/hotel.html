@@ -15,8 +15,9 @@
     </style>
 </head>
 
-    <body class="p-3 m-0 border-0 bd-example m-0 border-0">
+    <body>
 <header th:replace="~{fragments/header :: header}"></header>
+<div class="p-3 m-0 border-0 bd-example m-0 border-0">
 
     <p class="h1" th:text="${hotel.name}">Hotel Name</p>
     <p class="h6" th:text="${hotel.location}">Hotel Address</p>
@@ -57,6 +58,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <footer th:replace="~{fragments/footer :: footer}"></footer>
     </body>
