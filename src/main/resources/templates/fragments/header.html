@@ -15,24 +15,24 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img src="../images/logo.png" alt="logo" width="50" height="34">
+      <img th:src="@{/images/logo.png}" alt="logo" width="50" height="34">
       Minorease</a>
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       <li class="nav-item">
         <a class="nav-link" href="#">
-          <img src="./images/hotel.png" alt="login" width="30" height="24"> Hotels
+          <img th:src="@{/images/hotel.png}" alt="login" width="30" height="24"> Hotels
         </a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="#">
-          <img src="./images/transport.png" alt="login" width="30" height="24">Transport
+          <img th:src="@{/images/transport.png}" alt="login" width="30" height="24">Transport
         </a>
       </li>
     </ul>
     <div class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="../images/login.png" alt="logo" width="30" height="24">
+        <img th:src="@{/images/login.png}" alt="logo" width="30" height="24">
       </a>
       <ul class="dropdown-menu dropdown-menu-end">
         <li><a class="dropdown-item" href="#">Connecter</a></li>
