@@ -35,10 +35,19 @@
         <img th:src="@{/images/login.png}" alt="logo" width="30" height="24">
       </a>
       <ul class="dropdown-menu dropdown-menu-end">
-        <li><a class="dropdown-item" href="#">Connecter</a></li>
-        <li><a class="dropdown-item" href="#">S'inscrire</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Deconnecter</a></li>
+        <div th:if="${user == null}">
+          <!-- Si l'utilisateur n'est pas connecté -->
+          <li><a th:href="@{/login}" class="dropdown-item">Connecter</a></li>
+          <li><a th:href="@{/inscriptionparent}" class="dropdown-item">S'inscrire</a></li>
+        </div>
+        <div th:if="${user != null}">
+          <!-- Si l'utilisateur est connecté -->
+          <li><a th:href="@{/profil}" class="dropdown-item">Mon Profil</a></li>
+          <li><a th:href="@{/mesreservations}" class="dropdown-item">Mes Reservations</a></li>
+          <li><a th:href="@{/favoris}" class="dropdown-item">Mes Favoris</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" th:href="@{/index}">Deconnecter</a></li>
+        </div>
       </ul>
       </li>
     </div>

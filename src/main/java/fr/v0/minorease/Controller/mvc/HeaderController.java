@@ -7,7 +7,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HeaderController {
 
     @GetMapping("/room/index")
-    public String aboutUs() {
+    public String roomToIndex() {
         return "index";
     }
+
+    @GetMapping("/inscriptionparent")
+    public String inscriptionP() {
+        return "inscriptionparent";
+    }
+
+    @GetMapping("/login")
+    public String connecter() {
+        return "login";
+    }
 }
+
