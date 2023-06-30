@@ -9,12 +9,9 @@
 
 </head>
 <body>
-<footer th:fragments="footer" class="container-fluid bg-dark text-white py-5" >
+<footer th:fragments="footer" class="container-fluid bg-dark text-white py-5">
     <div class="container">
         <div class="row">
-
-
-
             <div class="col-md-4">
                 <h5>Liens utiles</h5>
                 <ul class="list-unstyled">
@@ -23,41 +20,30 @@
                     <li><a href="#" class="text-white">Conditions d'utilisation</a></li>
                 </ul>
             </div>
-
-
-
             <div class="col-md-4">
                 <h5>Contact</h5>
                 <p>23 rue du renard, Brest, France</p>
                 <p>Téléphone : +06 56 74 XX XX</p>
                 <p>Email : contact@minorease.com</p>
             </div>
-
-
-
             <div class="col-md-4">
                 <h5>Suivez-nous sur les réseaux sociaux :</h5>
                 <a href="#" class="text-white"><i class="fab fa-facebook fa-2x"></i></a>
                 <a href="#" class="text-white"><i class="fab fa-twitter fa-2x"></i></a>
                 <a href="#" class="text-white"><i class="fab fa-instagram fa-2x"></i></a>
             </div>
-
-
-
         </div>
-
-
-
         <div class="row mt-4">
-            <div class="col-4 text-left">
+            <div class="col-md-4 text-left">
                 <img th:src="@{/images/logo.png}" class="img-fluid mx-auto" style="max-width: 100px;">
             </div>
-            <div class="col text-right mt-1">
+            <div class="col-md-8 text-right mt-1">
                 © 2023 Minorease. Tous droits réservés.
             </div>
         </div>
     </div>
 </footer>
+
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
 </body>
