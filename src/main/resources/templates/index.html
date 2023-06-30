@@ -9,188 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
     <!--CSS-->
-    <link rel="stylesheet" href="../static/styles.css" th:href="@{/styles.css}"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #F4F4F4;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .mt-5 {
-            margin-top: 5rem;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .form-search {
-            background-color: #fff;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-search .form-control {
-            border-radius: 15px;
-            border: 1px solid #ddd;
-            font-size: 14px;
-            padding: 10px 15px;
-            color: #555;
-        }
-
-        .form-search .btn {
-            background-color: #333;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 15px;
-            cursor: pointer;
-        }
-
-        .form-search .btn:hover {
-            background-color: #555;
-        }
-
-        .filter-section {
-            background-color: #fff;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 15px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .filter-section .h4 {
-            font-family: 'Cinzel', serif;
-            color: #333;
-        }
-
-        .filter-section .form-label {
-            font-weight: 600;
-            color: #333;
-        }
-
-        .filter-section .form-check-label {
-            font-weight: 400;
-            color: #555;
-        }
-
-        .results-section {
-            background-color: #fff;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .results-section .h2 {
-            font-family: 'Cinzel', serif;
-            color: #333;
-        }
-
-        .results-section .form-label {
-            color: #555;
-        }
-
-        .results-section select {
-            width: 100%;
-            max-width: 200px;
-            border-radius: 15px;
-            border: 1px solid #ddd;
-            font-size: 14px;
-            padding: 10px 15px;
-            color: #555;
-        }
-
-        .card {
-            border-radius: 15px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .card:hover {
-            transform: scale(1.02);
-            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-img {
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-        }
-
-        .card-body {
-            padding: 1rem;
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .card-text {
-            color: #555;
-        }
-
-        .card-label {
-            font-weight: bold;
-            color: #555;
-        }
-
-        .card-price {
-            font-weight: bold;
-            color: #333;
-            margin-top: 0.5rem;
-        }
-
-        .btn-search {
-            margin: auto;
-        }
-
-        .description-limit {
-            max-height: 3.6em;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-        }
-
-        .stars {
-            font-size: 16px;
-            color: #ffd700;
-            margin-top: 0.5rem;
-        }
-
-        .card-img {
-            height: 200px;
-            object-fit: cover;
-        }
-        .card-title {
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            margin-bottom: 0;
-        }
-
-    </style>
 </head>
 <body>
 <header th:replace="~{fragments/header :: header}"></header>
@@ -323,23 +146,22 @@
                     </div>
                 </div>
                 <div class="row">
-                    <!-- Résultats de recherche d'hôtels -->
                     <div th:each="room : ${rooms}" class="col-md-4 mb-4">
-                    <div class="card">
-                        <img th:src="${room.image}" class="card-img img-fluid" alt="Hotel Image">
-                        <div class="card-body">
-                            <h5 class="card-title" th:text="${room.hotel.name}">Hotel Name</h5>
-                            <p class="card-text description-limit" th:text="${room.description}">Description</p>
-                            <p class="card-label">Note : <span th:text="${room.hotel.rating}">Rating</span> / 5</p>
-
-                            <div class="stars">
-                                <span th:each="star : ${#numbers.sequence(1, room.hotel.star)}">&#9733;</span>
+                        <a th:href="@{/room/{id}(id=${room.id})}" class="redirect">
+                            <div class="card">
+                                <img th:src="${room.image}" class="card-img img-fluid" alt="Hotel Image">
+                                <div class="card-body">
+                                    <h5 class="card-title" th:text="${room.hotel.name}">Hotel Name</h5>
+                                    <p class="card-text description-limit" th:text="${room.description}">Description</p>
+                                    <p class="card-label">Note : <span th:text="${room.hotel.rating}">Rating</span> / 5</p>
+                                    <div class="stars">
+                                        <span th:each="star : ${#numbers.sequence(1, room.hotel.star)}">&#9733;</span>
+                                    </div>
+                                    <p class="card-price" th:text="${room.price} + '0 €/nuit'">Price</p>
+                                </div>
                             </div>
-                            <p class="card-price" th:text="${room.price} + '0 €/nuit'">Price</p>
-                        </div>
+                        </a>
                     </div>
-                </div>
-
                 </div>
             </div>
         </div>

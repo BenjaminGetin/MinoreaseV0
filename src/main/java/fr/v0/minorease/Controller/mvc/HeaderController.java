@@ -16,9 +16,5 @@ public class HeaderController {
         return "inscriptionparent";
     }
 
-    @GetMapping("/login")
-    public String connecter() {
-        return "login";
-    }
 }
 
