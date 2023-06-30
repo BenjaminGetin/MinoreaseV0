@@ -41,7 +41,7 @@
             <p th:text="${parent.phoneNumber}" th:if="${#authorization.expression('hasRole(''PARENTS'')')}">XX-XX-XX-XX-XX</p>
             <p th:text="${children.phoneNumber}" th:if="${#authorization.expression('hasRole(''CHILD'')')}">XX-XX-XX-XX-XX</p>
         </div>
-        <div class="card p-2" th:if="${#authorization.expression('hasRole(''PARENTS'')')}>
+        <div class="card p-2" th:if="${#authorization.expression('hasRole(''PARENTS'')')}">
             <span>Enfants</span>
             <h3 th:if="${childrens.isEmpty()}">Pas de mineurs enregistrés pour le moment</h3>
             <div th:unless="${childrens.isEmpty()}" th:each="children : ${childrens}" class="d-flex flex-row text-center gap-2">
