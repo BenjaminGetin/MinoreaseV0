@@ -180,3 +180,6 @@ body {
 .redirect:hover {
     text-decoration: none;
 }
+.cup{
+    width: 100px;
+}
