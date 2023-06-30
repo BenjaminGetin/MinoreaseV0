@@ -35,13 +35,17 @@
             <p th:text="${parent.billingAdress}">gjdfkgdritgjrijgtgrigjrigj<br>
                 02113 fhseufgsefgs</p>
             <label>Mail</label>
-            <p th:text="${user.email}">dfdlgkfgjkdr@dksldk.fr</p>
+            <p th:text="${user.email}" th:if="${#authorization.expression('hasRole(''PARENTS'')')}">dfdlgkfgjkdr@dksldk.fr</p>
+            <p th:text="${children.email}" th:if="${#authorization.expression('hasRole(''CHILD'')')}">dfdlgkfgjkdr@dksldk.fr</p>
+            <label>Téléphone</label>
+            <p th:text="${parent.phoneNumber}" th:if="${#authorization.expression('hasRole(''PARENTS'')')}">XX-XX-XX-XX-XX</p>
+            <p th:text="${children.phoneNumber}" th:if="${#authorization.expression('hasRole(''CHILD'')')}">XX-XX-XX-XX-XX</p>
         </div>
-        <div class="card p-2">
+        <div class="card p-2" th:if="${#authorization.expression('hasRole(''PARENTS'')')}>
             <span>Enfants</span>
             <h3 th:if="${childrens.isEmpty()}">Pas de mineurs enregistrés pour le moment</h3>
             <div th:unless="${childrens.isEmpty()}" th:each="children : ${childrens}" class="d-flex flex-row text-center gap-2">
-                <div class="card d-flex flex-column text-center col-3 gap-2" th:href="@{/profilmineur/{id}(id=${children.id})}">
+                <div class="card d-flex flex-column text-center col-3 gap-2" th:href="@{/profil/{id}(id=${children.id})}">
                     <img src="../static/images/MicrosoftTeams-image%20(3).png" class="rond" alt="photo du mineur">
                     <label th:text="${children.firstname} + ' ' + ${children.lastname}">Barbara Grey</label>
                 </div>
