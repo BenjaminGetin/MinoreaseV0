@@ -25,9 +25,14 @@ public class IndexController {
     @GetMapping("/index")
     public String searchRooms(Model model, @RequestParam(value = "city", required = false) String city, @RequestParam(value = "capacity", required = false) Integer capacity, @RequestParam(value = "arrivalDate", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate arrivalDate, @RequestParam(value = "departureDate", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate departureDate, @RequestParam(value = "minRating", required = false) Double minRating, @RequestParam(value = "maxPrice", required = false) BigDecimal maxPrice) {
         List<Room> rooms = roomService.searchRooms(city, capacity, arrivalDate, departureDate, minRating, maxPrice);
+        int totalRooms = rooms.size();
+
         model.addAttribute("rooms", rooms);
+        model.addAttribute("totalRooms", totalRooms); // Ajouter le nombre total de résultats
+
         return "index";
     }
+
 
 
 

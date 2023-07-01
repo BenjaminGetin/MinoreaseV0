@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Réservation détail</title>
+    <!--Police-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/rating.css}"/>
+    <!--js--->
+    <link rel="script" href="../static/js/rating.js" th:href="@{/js/rating.js}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
+          integrity="sha512-..." crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-..." crossorigin="anonymous"/>
+
+    <style>
+        section {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section-rating {
+            display: flex;
+            justify-content: center;
+        }
+
+        .divider {
+            border-top: 1px solid #ccc;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .details-image {
+            width: 100%;
+            height: 300px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .hotel-map {
+            width: 100%;
+            height: 300px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .pin {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            color: #E8C547;
+            font-size: 25px;
+        }
+
+        .container {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .card {
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #002447;
+            color: #fff;
+            padding: 10px 20px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .info-group {
+            margin-bottom: 20px;
+        }
+
+        .info-group h4 {
+            color: #002447;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .info-group p {
+            margin-bottom: 5px;
+        }
+
+        .price-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .price-info h4 {
+            color: #002447;
+            font-size: 20px;
+            margin-bottom: 0;
+            flex: 1;
+        }
+
+        .price-info span {
+            color: #E8C547;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .access-code-container {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 20px;
+            color: #002447;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .access-code-container span {
+            display: block;
+            margin-top: 5px;
+        }
+
+        .rating-section {
+            margin-top: 20px;
+        }
+
+        .rating-section h4 {
+            color: #002447;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .hotel-stars {
+            font-size: 20px;
+            color: #ffd700;
+        }
+
+
+        @media (min-width: 576px) {
+            .container {
+                max-width: 540px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                max-width: 960px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1140px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+
+<section class="section">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Détails de la réservation</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Informations sur la réservation :</h4>
+                        <img class="details-image" th:src="${reservation.room.image}" alt="Chambre">
+                        <div class="info-group">
+                            <p><strong>Chambre :</strong> <span th:text="${reservation.room.name}"
+                                                                class="text-primary"></span></p>
+                            <p><strong>Parent :</strong> <span th:text="${reservation.parent.firstname}"
+                                                               class="text-primary"></span></p>
+                            <p><strong>Enfant :</strong> <span
+                                    th:text="${reservation.child.firstname} + ' ' + ${reservation.child.lastname}"
+                                    class="text-primary"></span></p>
+                            <p><strong>Date d'arrivée :</strong> <span th:text="${reservation.arrivalDate}"
+                                                                       class="text-primary"></span></p>
+                            <p><strong>Date de départ :</strong> <span th:text="${reservation.departureDate}"
+                                                                       class="text-primary"></span></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Informations sur l'hôtel :</h4>
+                        <div class="hotel-map" id="map"></div>
+                        <div class="info-group">
+                            <p><strong>Nom :</strong> <span th:text="${reservation.room.hotel.name}"
+                                                            class="text-primary"></span></p>
+                            <p><strong>Adresse :</strong> <span th:text="${reservation.room.hotel.location}"
+                                                                class="text-primary"></span></p>
+                            <p><strong>Téléphone :</strong> <span class="text-primary">07 97 14 XX XX</span></p>
+                            <p>
+                                <strong>Étoiles :</strong>
+                                <span th:each="star : ${#numbers.sequence(1, reservation.room.hotel.star)}">
+        <span class="hotel-stars">&#9733;</span>
+    </span>
+                            </p></div>
+                    </div>
+                </div>
+                <hr class="divider">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="price-info">
+                            <h4>Prix HT :</h4>
+                            <span th:text="${reservation.priceHT + '€'}" class="text-primary"></span>
+                        </div>
+                        <div class="price-info">
+                            <h4>Prix TTC :</h4>
+                            <span th:text="${reservation.priceTTC + '€'}" class="text-primary"></span>
+                        </div>
+
+                    </div>
+                </div>
+                <hr class="divider">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Code d'accès :</h4>
+                        <div class="access-code-container">
+                            <span th:text="${reservation.accessCode}"></span>
+                        </div>
+                    </div>
+                </div>
+                <hr class="divider">
+                <div class="row rating-section">
+                    <div class="col-md-12">
+                        <div th:replace="fragments/rating :: feedback-section"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script rel="script" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+<script>
+    // Récupérez les coordonnées de latitude et longitude de l'hôtel
+    var latitude = [[${reservation.room.hotel.latitude}]];
+    var longitude = [[${reservation.room.hotel.longitude}]];
+
+    // Initialisez la carte
+    var map = L.map('map').setView([latitude, longitude], 13);
+
+    // Ajoutez une couche de carte (par exemple, OpenStreetMap)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; OpenStreetMap contributors',
+        maxZoom: 18,
+    }).addTo(map);
+
+    // Ajoutez un marqueur pour l'emplacement de l'hôtel
+    L.marker([latitude, longitude]).addTo(map);
+</script>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+</body>
+</html>

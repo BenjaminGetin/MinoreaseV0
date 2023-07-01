@@ -3,17 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <title>Mes réservations</title>
-    <!--Police-->
+    <!-- Police -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
-    <!--CSS-->
-    <link rel="stylesheet"  th:href="@{/style.css}"/>
-    <!--Bootstrap-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        .reservation-history {
+            margin-top: 20px;
+        }
+
+        .reservation-card {
+            display: flex;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            background-color: #f8f8f8;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            cursor: pointer;
+        }
+
+
+        .reservation-image {
+            width: 200px;
+            height: 205px;
+            object-fit: cover;
+        }
+
+        .reservation-details {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .reservation-details h5 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .reservation-details p {
+            margin: 0;
+            line-height: 1.5;
+            color: navy;
+        }
+
+        .reservation-price {
+            background-color: #ffd700;
+            padding: 10px;
+            text-align: right;
+            font-weight: bold;
+            color: navy;
+            border-radius: 5px;
+        }
+
+        .hotel-stars {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: #ffd700;
+        }
+
+
+
+    </style>
 </head>
 <body>
 <header th:replace="~{fragments/header :: header}"></header>
@@ -21,32 +84,47 @@
 <div class="container">
     <h1>Mes réservations</h1>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Réservation ID</th>
-            <th>Chambre</th>
-            <th>Parent</th>
-            <th>Enfant</th>
-            <th>Date d'arrivée</th>
-            <th>Date de départ</th>
-            <!-- Ajoutez d'autres colonnes si nécessaire -->
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="reservation : ${reservations}">
-            <td th:text="${reservation.id}"></td>
-            <td th:text="${reservation.room.name}"></td>
-            <td th:text="${reservation.parent.name}"></td>
-            <td th:text="${reservation.child.name}"></td>
-            <td th:text="${reservation.arrivalDate}"></td>
-            <td th:text="${reservation.departureDate}"></td>
-            <!-- Remplacez les attributs ci-dessus par ceux correspondant à votre modèle de réservation -->
-        </tr>
-        </tbody>
-    </table>
+    <div class="reservation-history">
+        <div th:each="reservation : ${reservations}" class="reservation-card" th:data-url="@{/reservation/{id}(id=${reservation.id})}">
+                <div class="reservation-image">
+                    <img th:src="${reservation.room.image}" alt="Image de l'hôtel" class="reservation-image">
+                    <div class="hotel-stars">
+                        <span th:each="star : ${#numbers.sequence(1, reservation.room.hotel.star)}">&#9733;</span>
+                    </div>
+                </div>
+                <div class="reservation-details">
+                    <p><strong>Chambre:</strong> <span th:text="${reservation.room.name}" class="text-primary"></span>
+                    </p>
+                    <p><strong>Parent:</strong> <span th:text="${reservation.parent.firstname}"
+                                                      class="text-primary"></span></p>
+                    <p><strong>Enfant:</strong> <span
+                            th:text="${reservation.child.firstname} + ' ' + ${reservation.child.lastname}"
+                            class="text-primary"></span></p>
+                    <p><strong>Date d'arrivée:</strong> <span th:text="${reservation.arrivalDate}"
+                                                              class="text-primary"></span></p>
+                    <p><strong>Date de départ:</strong> <span th:text="${reservation.departureDate}"
+                                                              class="text-primary"></span></p>
+                    <div class="reservation-price">
+                        <span th:text="${reservation.priceTTC + '€'}"></span>
+                    </div>
+                </div>
+        </div>
+    </div>
 </div>
-
 <footer th:replace="~{fragments/footer :: footer}"></footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script rel="script" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.reservation-card').click(function(){
+            window.location = $(this).data('url');
+        });
+    });
+</script>
+
 </body>
 </html>
