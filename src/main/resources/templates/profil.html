@@ -18,39 +18,43 @@
 <body>
 <header th:replace="~{fragments/header :: header}"></header>
 
-<div class="d-flex gap-4 m-3">
-    <div class="d-flex flex-column text-center m-3 gap-3">
-        <img src="../static/images/MicrosoftTeams-image%20(2).png" class="rond" alt="photo de profil">
-        <h3 th:text="${parent.firstname} + ' ' + ${parent.lastname}">Marc Grey</h3>
-        <div class="d-flex align-items-center justify-content-center">
-            <img src="../static/test/silvercup.jpg" class="cup">
-            <label>50</label>
-            <label>pts</label>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-4 text-center mb-4">
+            <img th:src="@{/images/parent.png}" class="rounded-circle" style="width: 200px; height: 200px;" alt="photo de profil">
+            <h3 class="mt-2" th:text="${parent.firstname + ' ' + parent.lastname}">Marc Grey</h3>
+            <div class="d-flex justify-content-center align-items-center mt-3">
+                <img th:src="@{/images/silvercup.jpg}" style="width: 50px; height: 50px;" alt="Silver Cup">
+                <h4 class="ml-2">50 pts</h4>
+            </div>
         </div>
-    </div>
-    <div class="d-flex flex-column gap-4 m-3">
-        <div class="card p-2">
-            <span>Informations</span>
-            <label>Adresse</label>
-            <p th:text="${parent.billingAdress}">gjdfkgdritgjrijgtgrigjrigj<br>
-                02113 fhseufgsefgs</p>
-            <label>Mail</label>
-            <p th:text="${user.email}" th:if="${#authorization.expression('hasRole(''PARENTS'')')}">dfdlgkfgjkdr@dksldk.fr</p>
-            <p th:text="${children.email}" th:if="${#authorization.expression('hasRole(''CHILD'')')}">dfdlgkfgjkdr@dksldk.fr</p>
-            <label>Téléphone</label>
-            <p th:text="${parent.phoneNumber}" th:if="${#authorization.expression('hasRole(''PARENTS'')')}">XX-XX-XX-XX-XX</p>
-            <p th:text="${children.phoneNumber}" th:if="${#authorization.expression('hasRole(''CHILD'')')}">XX-XX-XX-XX-XX</p>
-        </div>
-        <div class="card p-2" th:if="${#authorization.expression('hasRole(''PARENTS'')')}">
-            <span>Enfants</span>
-            <h3 th:if="${childrens.isEmpty()}">Pas de mineurs enregistrés pour le moment</h3>
-            <div th:unless="${childrens.isEmpty()}" th:each="children : ${childrens}" class="d-flex flex-row text-center gap-2">
-                <div class="card d-flex flex-column text-center col-3 gap-2" th:href="@{/profil/{id}(id=${children.id})}">
-                    <img src="../static/images/MicrosoftTeams-image%20(3).png" class="rond" alt="photo du mineur">
-                    <label th:text="${children.firstname} + ' ' + ${children.lastname}">Barbara Grey</label>
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Informations</h5>
+                    <p><strong>Adresse :</strong> <span th:text="${parent.billingAddress}">gjdfkgdritgjrijgtgrigjrigj<br>
+                        02113 fhseufgsefgs</span></p>
+                    <p><strong>Mail :</strong> <span th:text="${parent.user.email}">dfdlgkfgjkdr@dksldk.fr</span></p>
+                    <p><strong>Téléphone :</strong> <span th:text="${parent.phoneNumber}">XX-XX-XX-XX-XX</span></p>
                 </div>
             </div>
-            <a th:href="@{/inscriptionenfant}" class="btn btn-main">Ajouter un mineur</a>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Enfants</h5>
+                    <p th:if="${parent.children.isEmpty()}">Pas de mineurs enregistrés pour le moment</p>
+                    <div class="d-flex flex-wrap" th:unless="${parent.children.isEmpty()}" th:each="child : ${parent.children}">
+                        <div class="card m-2" style="width: 18rem;" th:href="@{/profil/{id}(id=${child.id})}">
+                            <img th:src="@{/images/enfant.png}" class="card-img-top" alt="photo du mineur">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${child.firstname + ' ' + child.lastname}">Barbara Grey</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <a th:href="@{/inscriptionenfant}" class="btn btn-primary mt-3">
+                        <i class="fas fa-plus-circle"></i> Ajouter un mineur
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
