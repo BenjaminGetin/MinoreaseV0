@@ -4,12 +4,17 @@ import fr.v0.minorease.entity.Hotel;
 import fr.v0.minorease.entity.Room;
 import fr.v0.minorease.service.HotelService;
 import fr.v0.minorease.service.RoomService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Controller
@@ -38,10 +43,11 @@ public class RoomDetailsController {
     @GetMapping("/room/{id}/reservation")
     public String showReservation(@PathVariable("id") Long roomId, Model model) {
         Room room = roomService.getRoomById(roomId);
-
         model.addAttribute("room", room);
-
         return "reservation";
     }
+
+
+
 }
 
