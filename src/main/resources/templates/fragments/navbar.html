@@ -15,9 +15,9 @@
 <body>
 
 <header th:fragment="navbar">
-    <nav class="navbar navbar-expand-custom navbar-mainbg">
-        <a class="navbar-brand navbar-logo" href="index" style="color: white">
-            <img th:src="@{/images/logo.png}" alt="Logo" width="50" height="34">
+    <nav class="navbar navbar-expand-custom navbar-mainbg p-0">
+        <a class="navbar-brand navbar-logo" href="/" style="color: white">
+            <img src="/images/logo.png" alt="Logo" width="50" height="34">
             Minorease
         </a>
         <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,23 +26,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-                <!--Connecté-->
-                <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
+                <!-- Connecté -->
+                <li class="nav-item" th:classappend="${activePage == 'reservation' ? 'active' : ''}">
                     <a class="nav-link" href="/reservation"><i class="fas fa-tachometer-alt"></i>Mes réservations</a>
                 </li>
-                <li class="nav-item active" th:if="${#authorization.expression('isAuthenticated()')}">
+                <li class="nav-item" th:classappend="${activePage == 'favoris' ? 'active' : ''}">
                     <a class="nav-link" href="/favoris"><i class="far fa-address-book"></i>Mes favoris</a>
                 </li>
-                <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
+                <li class="nav-item" th:classappend="${activePage == 'inscriptionenfant' ? 'active' : ''}">
                     <a class="nav-link" href="/inscriptionenfant"><i class="far fa-clone"></i>Ajouter un enfant</a>
                 </li>
-                <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
+                <li th:class="${activePage == 'profil' ? 'nav-item active' : 'nav-item'}">
                     <a class="nav-link" href="/profil"><i class="far fa-calendar-alt"></i>Profil</a>
                 </li>
                 <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
                     <a class="nav-link" href="/logout"><i class="far fa-chart-bar"></i>Déconnexion</a>
                 </li>
-                <!--Déconnecté-->
+                <!-- Déconnecté -->
                 <li class="nav-item" th:unless="${#authorization.expression('isAuthenticated()')}">
                     <a class="nav-link" href="/login"><i class="far fa-copy"></i>Connexion</a>
                 </li>
