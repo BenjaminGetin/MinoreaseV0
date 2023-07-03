@@ -84,6 +84,21 @@ public class HeaderController {
     }
 
 
+    @GetMapping("/cgu")
+    public String showCgu() {
+        return "cgu";
+    }
+
+    @GetMapping("/mentionslegales")
+    public String showMl() {
+        return "mentionslegales";
+    }
+
+    @GetMapping("/confidentialite")
+    public String showConfid() {
+        return "confidentialite";
+    }
+
 
 
 
