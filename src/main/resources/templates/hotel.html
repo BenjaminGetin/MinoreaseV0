@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <title>Minorease Inscription</title>
@@ -21,12 +22,19 @@
             padding: 0 !important;
             margin: 0 !important;
         }
+        .favorite-btn {
+            background-color: #ccc;
+            color: #fff;
+        }
+        .favorite-btn.added {
+            background-color: #ff0000;
+        }
     </style>
     <link th:rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-<header th:replace="~{fragments/header :: header}"></header>
+<header th:replace="~{fragments/navbar :: navbar}"></header>
 <div class="p-3 m-0 border-0 bd-example m-0 border-0">
 
     <p class="h1" th:text="${hotel.name}">Hotel Name</p>
@@ -35,7 +43,18 @@
     <br>
     <img th:src="@{/images/rating.png}" alt="logo" width="15" height="15">
     <span class="h6" th:text="${hotel.rating}">Hotel Rating</span>
-
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="mb-3 text-center">
+                    <!-- Bouton "Cœur" pour ajouter l'hôtel aux favoris -->
+                    <button class="btn btn-outline-primary favorite-btn" onclick="toggleFavorite(this)">
+                        <i class="fas fa-heart"></i> Favoris
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col align-self-center">
@@ -149,6 +168,13 @@
         window.location.href=url;
     }
 </script>
+<script>
+    // Fonction pour changer l'état du bouton favori
+    function toggleFavorite(button) {
+        button.classList.toggle("added"); // Ajoute ou supprime la classe "added"
+    }
+</script>
+<script th:src="@{/js/navbar.js}"></script>
 
 </body>
 </html>

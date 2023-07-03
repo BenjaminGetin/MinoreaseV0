@@ -27,8 +27,10 @@ public class ReservationUserController {
     public String getUserReservations(Model model) {
         List<Reservation> reservations = reservationRepository.findAll();
         model.addAttribute("reservations", reservations);
+        model.addAttribute("activePage", "reservation"); // Ajoutez cette ligne
         return "reservation-list";
     }
+
 
     @GetMapping("/reservation/{id}")
     public String getReservationById(@PathVariable("id") Long id, Model model) {
