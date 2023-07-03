@@ -35,7 +35,7 @@ public class RoomDetailsController {
         return modelAndView;
     }
 
-    @GetMapping("/room/reservation/{id}")
+    @GetMapping("/room/{id}/reservation")
     public String showReservation(@PathVariable("id") Long roomId, Model model) {
         Room room = roomService.getRoomById(roomId);
 
