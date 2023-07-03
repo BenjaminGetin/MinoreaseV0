@@ -1,5 +1,6 @@
 package fr.v0.minorease.Controller.mvc;
 
+import fr.v0.minorease.entity.Hotel;
 import fr.v0.minorease.entity.Parent;
 import fr.v0.minorease.entity.Room;
 import fr.v0.minorease.repository.ParentRepository;
@@ -68,12 +69,20 @@ public class HeaderController {
             }
         }
 
-        model.addAttribute("favoris", favoris);
+        model.addAttribute("hotels", getHotelsFromRooms(favoris)); // Utilisez une méthode pour obtenir la liste des hôtels correspondants aux chambres favorites
         model.addAttribute("activePage", "favoris");
-
 
         return "favoris";
     }
+
+    private List<Hotel> getHotelsFromRooms(List<Room> rooms) {
+        List<Hotel> hotels = new ArrayList<>();
+        for (Room room : rooms) {
+            hotels.add(room.getHotel());
+        }
+        return hotels;
+    }
+
 
 
 

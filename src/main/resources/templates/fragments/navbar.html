@@ -27,16 +27,16 @@
             <ul class="navbar-nav ml-auto">
                 <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
                 <!-- Connecté -->
-                <li class="nav-item" th:classappend="${activePage == 'reservation' ? 'active' : ''}">
+                <li class="nav-item" th:classappend="${activePage == 'reservation' ? 'active' : ''}" th:if="${#authorization.expression('isAuthenticated()')}">
                     <a class="nav-link" href="/reservation"><i class="fas fa-tachometer-alt"></i>Mes réservations</a>
                 </li>
-                <li class="nav-item" th:classappend="${activePage == 'favoris' ? 'active' : ''}">
+                <li class="nav-item" th:classappend="${activePage == 'favoris' ? 'active' : ''}" th:if="${#authorization.expression('isAuthenticated()')}">
                     <a class="nav-link" href="/favoris"><i class="far fa-address-book"></i>Mes favoris</a>
                 </li>
-                <li class="nav-item" th:classappend="${activePage == 'inscriptionenfant' ? 'active' : ''}">
+                <li class="nav-item" th:classappend="${activePage == 'inscriptionenfant' ? 'active' : ''}" th:if="${#authorization.expression('isAuthenticated()')}">
                     <a class="nav-link" href="/inscriptionenfant"><i class="far fa-clone"></i>Ajouter un enfant</a>
                 </li>
-                <li th:class="${activePage == 'profil' ? 'nav-item active' : 'nav-item'}">
+                <li class="nav-item" th:classappend="${activePage == 'profil' ? 'active' : ''}" th:if="${#authorization.expression('isAuthenticated()')}">
                     <a class="nav-link" href="/profil"><i class="far fa-calendar-alt"></i>Profil</a>
                 </li>
                 <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
