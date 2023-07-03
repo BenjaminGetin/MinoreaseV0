@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mentions légales</title>
+    <!--Police-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}"/>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+</head>
+<body>
+<header th:replace="~{fragments/navbar :: navbar}"></header>
+
+<div class="d-flex flex-column text-justify text-break">
+    <h2>Mentions légales</h2>
+
+    <p>Le site web Minorease est édité par :<br>
+        Minorease<br>
+        23 rue du renard<br>
+        29200 Brest<br>
+        Téléphone : 06 56 74 XX XX<br>
+        E-mail : contact@minorease.com<br>
+        <br>
+        Numéro d'identification de l'entreprise : XXXXXXXX<br>
+        Numéro de TVA : XXXXXXXXX<br>
+        <br>
+        Responsable de la publication : [Nom du responsable fictif]<br>
+        <br>
+        Hébergeur du site :<br>
+        [Nom de l'hébergeur fictif]<br>
+        Adresse de l'hébergeur fictif<br>
+        Téléphone de l'hébergeur fictif<br>
+        E-mail de l'hébergeur fictif
+    </p>
+
+    <p>Propriété intellectuelle :<br>
+        Tous les contenus présents sur le site Minorease, tels que les textes, les images, les vidéos, les logos, les
+        marques, etc., sont protégés par le droit d'auteur et autres droits de propriété intellectuelle. Toute
+        reproduction ou utilisation sans autorisation préalable de Minorease est strictement interdite.<br>
+        <br>
+        Collecte de données personnelles :<br>
+        Minorease collecte et traite les données personnelles des utilisateurs conformément à sa politique de
+        confidentialité. Pour plus d'informations sur la collecte, le stockage et l'utilisation des données
+        personnelles, veuillez consulter notre politique de confidentialité.<br>
+        <br>
+        Utilisation des cookies :<br>
+        Le site Minorease utilise des cookies pour améliorer l'expérience de navigation des utilisateurs. En utilisant
+        ce site, vous consentez à l'utilisation de cookies. Vous pouvez modifier les paramètres de votre navigateur pour
+        refuser les cookies, mais cela peut affecter certaines fonctionnalités du site.<br>
+        <br>
+        Liens externes :<br>
+        Le site Minorease peut contenir des liens vers des sites externes. Nous n'avons aucun contrôle sur le contenu
+        et les pratiques de confidentialité de ces sites tiers. En conséquence, nous déclinons toute responsabilité
+        quant à leur contenu ou à leurs pratiques.<br>
+        <br>
+        Limitation de responsabilité :<br>
+        L'utilisation du site Minorease se fait à vos propres risques. Nous nous efforçons de fournir des informations
+        précises et à jour, mais nous ne pouvons garantir l'exactitude, l'exhaustivité ou la pertinence des informations
+        fournies sur le site. En aucun cas, Minorease ne pourra être tenu responsable des dommages directs, indirects,
+        accessoires, spéciaux ou consécutifs résultant de l'utilisation ou de l'impossibilité d'utiliser le site.<br>
+        <br>
+        Droit applicable et litiges :<br>
+        Les présentes mentions légales sont régies par le droit français. En cas de litige relatif au site Minorease,
+        les tribunaux compétents de Brest seront seuls compétents.<br>
+        <br>
+        Modification des mentions légales :<br>
+        Minorease se réserve le droit de modifier à tout moment les présentes mentions légales. Il est recommandé aux
+        utilisateurs de consulter régulièrement cette page pour prendre connaissance des éventuelles modifications.
+    </p>
+</div>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+
+<!--BootStrap-->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
+<!--JavaScript-->
+<script src="../static/js/script.js" th:src="@{/js/navbar.js}" type="module"></script>
+</body>
+</html>
